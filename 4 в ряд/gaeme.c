@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
-#define ROWS 7
-#define COLS 8
+#define ROWS 10
+#define COLS 10
 
 void displayBoard(char board[ROWS][COLS])
 {
-    printf("_____________\n");
+    printf("1 2 3 4 5 6 7 8 9\n");
+    printf("_________________\n");
     for (int i = ROWS - 1; i >= 1; i--)
     {
         for (int j = 1; j < COLS; j++)
@@ -15,7 +17,8 @@ void displayBoard(char board[ROWS][COLS])
         }
         printf("\n");
     }
-    printf("—————————————\n");
+    printf("—————————————————\n");
+    printf("1 2 3 4 5 6 7 8 9\n");
 }
 
 // Функция для проверки, можно ли сделать ход в указанную колонку
@@ -40,12 +43,6 @@ void makeMove(int col, char color, char board[ROWS][COLS])
         }
     }
 }
-
-void botDebil()
-{
-
-}
-
 
 // Функция для проверки наличия победителя
 bool checkWin(char color, char board[ROWS][COLS])
@@ -126,13 +123,13 @@ void playGame()
 
         printf("Ход игрока %c\n", currentPlayer);
         int col;
-        printf("Введите номер колонки (от 1 до 7): ");
+        printf("Введите номер колонки (от 1 до 9): ");
         scanf("%d", &col);
 
         if (isValidMove(col, board))
         {
             makeMove(col, currentPlayer, board);
-
+            system("clear");
             if (checkWin(currentPlayer, board))
             {
                 displayBoard(board);
